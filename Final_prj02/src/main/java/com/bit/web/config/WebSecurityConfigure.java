@@ -39,9 +39,9 @@ public class WebSecurityConfigure extends WebSecurityConfigurerAdapter {
 		//Begin - User Id 및  Pwd 확인
 		http.formLogin()
 			.loginPage("/guest/login")
-			.loginProcessingUrl("/j_spring_security_check") 
 			.usernameParameter("userId")
 			.passwordParameter("userPwd")
+			.loginProcessingUrl("/j_spring_security_check") 
 			.successHandler(AuthenticationSuccessHandler)
 			.failureHandler(authenticationFailureHandler)
 			.permitAll();
@@ -52,7 +52,7 @@ public class WebSecurityConfigure extends WebSecurityConfigurerAdapter {
 			.logoutSuccessUrl("/home")	//로그아웃 성공시 홈페이지로 이동
 			.permitAll();
 		
-		http.csrf().disable();
+		//http.csrf().disable();
 	}
 	
 	@Override

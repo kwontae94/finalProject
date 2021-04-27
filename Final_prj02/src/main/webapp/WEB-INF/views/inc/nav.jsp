@@ -324,7 +324,7 @@
                 <li class="nav-item"><a class="dropdown-item" href="/guest/login">로그인</a></li>
                </sec:authorize>
               <sec:authorize access="isAuthenticated()">
-                <li class="nav-item"><a class="dropdown-item" href="/logout">로그아웃</a></li>
+                <li class="nav-item"><a class="dropdown-item" id=logout_btn href="#">로그아웃</a></li>
                </sec:authorize>
                 <li class="nav-item"><a class="dropdown-item" href="/guest/signup">회원가입</a></li>
                 <li class="nav-item"><a class="dropdown-item" href="/member/myinfo">내정보</a></li>
@@ -334,3 +334,20 @@
         </div>
       </div>
     </nav>
+    <script>
+		$(document).ready(function(){
+			$(document).on("click","#logout_btn",function(){
+				var form = document.createElement('form');
+				var objs;
+				objs = document.createElement('input');
+				objs.setAttribute('type', 'hidden');
+ 				objs.setAttribute('name', '${_csrf.parameterName }');
+				objs.setAttribute('value', '${_csrf.token }');
+				form.appendChild(objs);
+				form.setAttribute('method', 'post');
+				form.setAttribute('action', "/logout");
+				document.body.appendChild(form);
+				form.submit();
+			});
+		});
+    </script>

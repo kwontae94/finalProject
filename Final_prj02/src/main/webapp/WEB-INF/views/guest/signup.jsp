@@ -82,6 +82,8 @@
 	<script>
 		$(document).ready(function(){
 			$("#Duplicate_Check").click(function(){
+				var csrfHeaderName = "${_csrf.headerName}";
+				var csrfTokenValue = "${_csrf.token}";
 				var account = $("#Account").val();
 				
 				if(account == ""){
@@ -90,11 +92,14 @@
 					$.ajax({
 						type:'post',
 						url:'/idcheck',
+ 						beforeSend:function(xhr){
+							xhr.setRequestHeader(csrfHeaderName,csrfTokenValue);
+						}, 
 						data:{userId:account},
 						success:function(msg){
 							$("#Account").attr("readonly","readonly");
 							alert(msg);
-						},
+						},	
 						error:function(){
 							alert("중복된 아이디 입니다.");
 						}
@@ -103,6 +108,8 @@
 			});
 			
 			$("#CF_number_btn").click(function(){
+				var csrfHeaderName = "${_csrf.headerName}";
+				var csrfTokenValue = "${_csrf.token}";
 				var email = $("#useremail").val();
 				if(email == ""){
 					alert("이메일을 입력해 주세요");
@@ -110,6 +117,9 @@
 					$.ajax({
 						type:'post',
 						url:'/sendmail',
+  						beforeSend:function(xhr){
+							xhr.setRequestHeader(csrfHeaderName,csrfTokenValue);
+						}, 
 						data:{address:email},
 						success:function(key){
 							$("#temp_CF_number").val(key);
