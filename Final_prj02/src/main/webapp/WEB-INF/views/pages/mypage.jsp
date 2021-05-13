@@ -78,6 +78,7 @@
                 <li class="nav-item  g-mx-10--lg g-mx-15--xl">
                   <a href="#" class="nav-link g-py-7 g-px-0">방명록</a>
                 </li>
+                <!--End menu bar  -->
               </ul>
             </div>
             <!-- End Navigation -->
@@ -102,8 +103,6 @@
     <!-- End Promo Block -->
 
 
-    
-
         
           <!-- Timeline #01 -->
           <section class="g-py-100">
@@ -112,7 +111,7 @@
                 <h2 class="h4">Timeline</h2>
               </div>
 				
-			<c:forEach items="${list }" var="bean" varStatus="status">
+			<c:forEach items="${pictures }" var="bean" varStatus="status">
 			 	
               <div class="row u-timeline-v1-wrap g-mx-minus-15">
                 <!-- Timeline Box -->
@@ -137,7 +136,7 @@
                     <!-- Timeline Content -->
                     <article class="u-timeline-v1 g-pa-5">
                       <figure class="g-pos-rel">
-                        <img class="img-fluid w-100" src='${bean.filename }' alt="Image Description">
+                        <img class="img-fluid w-100" src='${bean.fileName }' alt="Image Description">
 							
 
                       </figure>
@@ -156,7 +155,7 @@
                         <div class="media g-font-size-12">
                           <img class="d-flex mr-3 rounded-circle g-width-30 g-height-30" src="../../assets/img-temp/100x100/img7.jpg" alt="Image Description">
                           <div class="media-body align-self-center text-uppercase">
-                            <a class="u-link-v5 g-color-main g-color-primary--hover" href="#">${bean.username }</a>
+                            <a class="u-link-v5 g-color-main g-color-primary--hover" href="#">${bean.userName }</a>
                           </div>
 
                           <div class="align-self-center">

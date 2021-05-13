@@ -16,19 +16,6 @@ import lombok.Setter;
 @Service
 public class CreateServiceImpl implements CreateService{
 
-		
-	
-//	@Autowired
-//	SqlSessionTemplate template;
-//	
-//	@Autowired
-//	SqlSessionFactory factory;
-
-//	@Override
-//	public String checkPage() {
-//		return template.selectOne(CreateDao.class.getTypeName()+".checkPage");
-//		
-//	}
 
 	@Setter(onMethod_ = {@Autowired})
 	private CreateDao createDao;
@@ -51,7 +38,6 @@ public class CreateServiceImpl implements CreateService{
 		bean.setId(id);
 
 		createDao.createOne(bean);
-//		template.insert(CreateDao.class.getTypeName()+".createOne",bean);
 		
 	}
 

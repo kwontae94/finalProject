@@ -1,17 +1,12 @@
-package com.bit.web.dao;
+package com.bit.web.service;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Mapper;
-
 import com.bit.web.entity.PictureVo;
 
-@Mapper
-public interface PictureDao {
-	
+public interface PictureService {
+
 	List<PictureVo> selectAll(String id);
 	
 	List<String> selectAll2(String id);
-	
-	
 }

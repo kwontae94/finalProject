@@ -19,4 +19,6 @@ public interface CreateDao {
 	void createOne(CreateVo bean);
 	
 	List<CreateVo> selectLayout(String id);
+	
+
 }

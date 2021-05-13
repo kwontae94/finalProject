@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bit.web.entity.CreateVo;
+import com.bit.web.entity.PictureVo;
 import com.bit.web.service.CreateService;
+import com.bit.web.service.PictureService;
 
 @Controller
 @RequestMapping("/")
@@ -23,6 +25,9 @@ public class HomeController {
 	
 	@Autowired
 	CreateService createService;
+	
+	@Autowired
+	PictureService pictureService;
 
 	@RequestMapping("")
 	public String home1() {
@@ -42,7 +47,6 @@ public class HomeController {
 
 		String id = (String) session.getAttribute("userID");
 		System.out.println(id);
-
 		
 		 if (createService.checkPage(id) == null) {
 			 model.addAttribute("newpageID",createService.checkPage(id));
@@ -92,17 +96,21 @@ public class HomeController {
 		
 		List<CreateVo> list=createService.selectLayout(id);//newpage table의 스키마 list로 받아옴
 		
+		
 		if(list.size()>0) {
 			CreateVo bean=list.get(0);
 			if(bean.getLayout()==1) {
 				model.addAttribute("layout",list);
-				return "home/mypage";
+				model.addAttribute("pictures",pictureService.selectAll(id));
+				return "pages/mypage";
 			}else if(bean.getLayout()==2) {
 				model.addAttribute("layout",list);
-				return "home/mypage2";
+				model.addAttribute("pictures",pictureService.selectAll2(id));
+				return "pages/mypage2";
 			}else if(bean.getLayout()==3) {
 				model.addAttribute("layout",list);
-				return "home/mypage3";
+				model.addAttribute("pictures","");
+				return "pages/mypage3";
 			}
 			//list.size가 0이상이면 newpage 테이블에 스키마 존재 layout 컬럼 값에 따라 layout 결정
 			
