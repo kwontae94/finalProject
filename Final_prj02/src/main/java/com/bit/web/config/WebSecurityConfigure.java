@@ -52,7 +52,7 @@ public class WebSecurityConfigure extends WebSecurityConfigurerAdapter {
 			.logoutSuccessUrl("/home")	//로그아웃 성공시 홈페이지로 이동
 			.permitAll();
 		
-		http.csrf().disable();
+		//http.csrf().disable();
 	}
 	
 	@Override

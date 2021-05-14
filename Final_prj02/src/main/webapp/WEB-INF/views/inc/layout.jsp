@@ -39,7 +39,7 @@
   	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 
 	<!-- 그림 풀로 보여주기 -->
-	<link href="css/full-width-pics.css" rel="stylesheet">
+	<link href="/css/full-width-pics.css" rel="stylesheet">
 	
 	<style type="text/css">
 	@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');

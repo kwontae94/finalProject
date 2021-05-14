@@ -93,14 +93,19 @@
 						type:'post',
 						url:'/idcheck',
  						beforeSend:function(xhr){
-							xhr.setRequestHeader(csrfHeaderName,csrfTokenValue);
+							console.log(csrfHeaderName,csrfTokenValue);
+							/* xhr.setRequestHeader('JSESSIONID',csrfTokenValue);
+ */							xhr.setRequestHeader(csrfHeaderName,csrfTokenValue);
 						}, 
 						data:{userId:account},
 						success:function(msg){
 							$("#Account").attr("readonly","readonly");
 							alert(msg);
 						},	
-						error:function(){
+						error:function(a,b,c){
+							console.log("a",a);
+							console.log("b",b);
+							console.log("c",c);
 							alert("중복된 아이디 입니다.");
 						}
 					});	

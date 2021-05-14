@@ -92,7 +92,7 @@
 
 
 	<c:forEach items="${layout }" var="bean">
-	<c:forEach items="${pictures }" var="bean1">
+	
     <!-- Revolution Slider -->
     <div class="g-overflow-hidden">
       <div id="welcome_wrapper" class="rev_slider_wrapper fullwidthbanner-container" data-alias="themeplicity-header177" data-source="gallery" style="margin:0px auto;background-color:#e9eae2;padding:0px;margin-top:0px;margin-bottom:0px;">
@@ -105,13 +105,15 @@
               <!-- <!-- MAIN IMAGE -->
               <img src="/assets/img/bg/transparent.png" data-bgcolor="#e9eae2" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="off" class="rev-slidebg">
               LAYERS -->
-
+				
+			<c:forEach items="${pictures}" var="map">
               <!-- LAYER NR. 1 -->
               <div class="tp-caption   tp-resizeme rs-parallaxlevel-14" id="slide-3186-layer-13" data-x="['right','right','right','right']" data-hoffset="['-328','-328','-328','-248']" data-y="['bottom','bottom','bottom','bottom']" data-voffset="['-417','-417','-417','-240']"
               data-width="none" data-height="none" data-whitespace="nowrap" data-type="image" data-responsive_offset="on" data-frames='[{"delay":600,"speed":2000,"frame":"0","from":"x:right;rZ:-90deg;","to":"o:1;","ease":"Power4.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
               data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 5;">
-                <img src="${bean1.fileName }" alt="" data-ww="['700px','700px','700px','500px']" data-hh="['700px','700px','700px','500px']" width="1500" height="1500">
+                <img src="${map.fileName }" alt="" data-ww="['700px','700px','700px','500px']" data-hh="['700px','700px','700px','500px']" width="1500" height="1500">
               </div>
+			</c:forEach>
 
               <!-- LAYER NR. 2 -->
               <div class="tp-caption   tp-resizeme rs-parallaxlevel-7" id="slide-3186-layer-14" data-x="['left','left','left','left']" data-hoffset="['-248','-248','-248','-190']" data-y="['top','top','top','top']" data-voffset="['-219','-219','-219','-205']" data-width="none"
@@ -170,7 +172,7 @@
       </div>
     </div>
     <!-- End Revolution Slider -->
-</c:forEach>
+
 
 
     <!-- About -->
@@ -248,7 +250,7 @@
       <div class="row">
         <div class="col-sm-6 col-lg-3 g-mb-30">
           <a class="d-inline-block mb-4" href="#">
-            <img class="g-width-100 g-height-auto" src="/assets/img/logo/logo-1.png" alt="Image description">
+            <img class="g-width-100 g-height-auto" src="/assets/img/logo/travler2.png" alt="Image description">
           </a>
 
           <p class="g-color-gray-dark-v4 g-font-size-13">${bean.user } &copy; All Rights Reserved.</p>
@@ -304,7 +306,7 @@
 
     </footer>
     <!-- End Footer -->
-	</c:forEach>
+</c:forEach>
 
   </main>
 

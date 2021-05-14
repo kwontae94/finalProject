@@ -259,7 +259,6 @@
                 <i class="d-flex g-color-white-opacity-0_7 mt-1 mr-3 icon-hotel-restaurant-235 u-line-icon-pro"></i>
                 <div class="media-body g-color-white-opacity-0_9">
                   서울특별시 종로구 종로2가 9 7층 비트캠프
-                  <br>PI New York Avenue
                 </div>
               </li>
               <li class="media mb-4">

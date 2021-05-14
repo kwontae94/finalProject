@@ -12,7 +12,7 @@ import com.bit.web.entity.CreateVo;
 @Mapper
 public interface CreateDao {
 
-//	@Select("select id from newpage where id = #{id} ")
+
 	String checkPage(String id);
 	
 

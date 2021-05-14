@@ -1,6 +1,9 @@
 package com.bit.web.service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,15 +26,27 @@ public class PictureServiceImpl implements PictureService{
 	}
 
 	@Override
-	public List<String> selectAll2(String id) {
-		
-		System.out.println(pictureDao.selectAll2(id));
-//		System.out.println(pictureDao.selectAll2(id).get(0));
-//		System.out.println(pictureDao.selectAll2(id).get(1));
-//		System.out.println(pictureDao.selectAll2(id).get(2));
+	public Map<Integer, String> selectAll2(String id) {
 		
 		
-		return pictureDao.selectAll2(id);
+		
+		
+		List list=pictureDao.selectAll2(id);
+		
+		Map fileNameList=new HashMap<Integer,String>();
+		
+		for(int i=0;i<3;i++) {
+			PictureVo bean=(PictureVo) list.get(i);
+			bean.getFileName();
+			
+			fileNameList.put(i,bean.getFileName());
+		}
+		
+		System.out.println(fileNameList.toString());
+		
+		return fileNameList;
 	}
+
+	
 
 }

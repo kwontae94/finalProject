@@ -20,9 +20,9 @@ public class IDCheck {
 	@RequestMapping("idcheck")
 	public String idCheck(String userId) {
 		
-		String msg ="사용가능한 아이디 입니다";
 		
 		idCheck.insertId(userId);
+		String msg ="사용가능한 아이디 입니다";
 				
 		return String.format("%s", msg);
 	}

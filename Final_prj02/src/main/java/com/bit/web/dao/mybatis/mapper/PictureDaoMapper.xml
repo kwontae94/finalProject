@@ -5,11 +5,13 @@
 <mapper namespace="com.bit.web.dao.PictureDao">
 		
 	<select id="selectAll" resultType="com.bit.web.entity.PictureVo" parameterType="java.lang.String">
-		select * from pictures where id = #{id} order by date;
+		select * from pictures where id = #{id} order by date
 	</select>
 	
 	<select id="selectAll2" resultType="com.bit.web.entity.PictureVo" parameterType="java.lang.String">
-		select fileName from pictures where id = #{id} order by date;
+		select fileName from pictures where id = #{id} order by date
 	</select>
+	
+	
 	
 </mapper>

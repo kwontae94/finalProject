@@ -11,7 +11,7 @@ public interface PictureDao {
 	
 	List<PictureVo> selectAll(String id);
 	
-	List<String> selectAll2(String id);
+	List<PictureVo> selectAll2(String id);
 	
 	
 }
