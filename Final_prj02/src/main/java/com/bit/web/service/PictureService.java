@@ -9,7 +9,7 @@ public interface PictureService {
 
 	List<PictureVo> selectAll(String id);
 	
-	Map<Integer,String> selectAll2(String id);
+	Map<String,String> selectAll2(String id);
 	
 	
 }

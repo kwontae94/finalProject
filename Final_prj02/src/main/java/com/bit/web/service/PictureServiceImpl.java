@@ -26,20 +26,20 @@ public class PictureServiceImpl implements PictureService{
 	}
 
 	@Override
-	public Map<Integer, String> selectAll2(String id) {
+	public Map<String, String> selectAll2(String id) {
 		
 		
 		
 		
 		List list=pictureDao.selectAll2(id);
 		
-		Map fileNameList=new HashMap<Integer,String>();
+		Map fileNameList=new HashMap<String,String>();
 		
 		for(int i=0;i<3;i++) {
 			PictureVo bean=(PictureVo) list.get(i);
 			bean.getFileName();
 			
-			fileNameList.put(i,bean.getFileName());
+			fileNameList.put("picture"+i,bean.getFileName());
 		}
 		
 		System.out.println(fileNameList.toString());

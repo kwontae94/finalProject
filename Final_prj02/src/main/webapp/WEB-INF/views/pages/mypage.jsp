@@ -249,6 +249,8 @@
     <footer class="g-bg-bluegray">
       <div class="container g-pt-100 g-pb-60">
         
+
+        
         <div class="row justify-content-start g-mb-50 g-mb-70--md">
           <div class="col-md-4 col-lg-3 g-mb-30">
             <h2 class="h3 g-color-white g-font-weight-600 g-mb-15">Contacts</h2>
@@ -289,6 +291,7 @@
                 <a class="d-inline-block g-color-white-opacity-0_9 g-color-primary--hover rounded g-text-underline--none--hover g-transition-0_5 g-pl-7--hover" href="#">Privacy Policy</a>
               </li>
             </ul>
+		  
             <!-- End Links -->
           </div>
 

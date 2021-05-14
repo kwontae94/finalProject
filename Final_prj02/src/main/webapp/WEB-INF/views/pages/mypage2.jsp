@@ -113,7 +113,7 @@
               <div class="tp-caption   tp-resizeme rs-parallaxlevel-14" id="slide-3186-layer-13" data-x="['right','right','right','right']" data-hoffset="['-328','-328','-328','-248']" data-y="['bottom','bottom','bottom','bottom']" data-voffset="['-417','-417','-417','-240']"
               data-width="none" data-height="none" data-whitespace="nowrap" data-type="image" data-responsive_offset="on" data-frames='[{"delay":600,"speed":2000,"frame":"0","from":"x:right;rZ:-90deg;","to":"o:1;","ease":"Power4.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
               data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 5;">
-                <img src="" alt="" data-ww="['700px','700px','700px','500px']" data-hh="['700px','700px','700px','500px']" width="1500" height="1500">
+                <img src="${pictures.picture0 }" alt="" data-ww="['700px','700px','700px','500px']" data-hh="['700px','700px','700px','500px']" width="1500" height="1500">
               </div>
 			
 
@@ -121,7 +121,7 @@
               <div class="tp-caption   tp-resizeme rs-parallaxlevel-7" id="slide-3186-layer-14" data-x="['left','left','left','left']" data-hoffset="['-248','-248','-248','-190']" data-y="['top','top','top','top']" data-voffset="['-219','-219','-219','-205']" data-width="none"
               data-height="none" data-whitespace="nowrap" data-type="image" data-responsive_offset="on" data-frames='[{"delay":600,"speed":2000,"frame":"0","from":"x:left;rZ:90deg;","to":"o:1;rZ:20;","ease":"Power4.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
               data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 6;">
-                <img src="" alt="" data-ww="['650px','650px','650px','500px']" data-hh="['650px','650px','650px','500px']" width="1000" height="1000">
+                <img src="${pictures.picture1 }" alt="" data-ww="['650px','650px','650px','500px']" data-hh="['650px','650px','650px','500px']" width="1000" height="1000">
               </div>
 
 <!--               LAYER NR. 3
@@ -135,7 +135,7 @@
               <div class="tp-caption   tp-resizeme rs-parallaxlevel-6" id="slide-3186-layer-7" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['top','top','top','top']" data-voffset="['466','406','456','276']" data-width="none"
               data-height="none" data-whitespace="nowrap" data-type="image" data-responsive_offset="on" data-frames='[{"delay":600,"speed":1200,"frame":"0","from":"y:bottom;rX:90deg;","to":"o:1;","ease":"Power4.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
               data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 8;">
-                <img src="/assets/img-temp/800x800/img1.png" alt="" data-ww="['600px','600px','600px','600px']" data-hh="['600px','600px','600px','600px']" width="800" height="800">
+                <img src="${pictures.picture2 }" alt="" data-ww="['600px','600px','600px','600px']" data-hh="['600px','600px','600px','600px']" width="800" height="800">
               </div>
 
       
@@ -175,10 +175,7 @@
     </div>
     <!-- End Revolution Slider -->
 
-		<c:out value="${pictures[0] }"></c:out>
-				
-				
-
+		
     <!-- About -->
     <section class="container g-pt-100 g-pb-70">
       <div class="masonry-grid row">
