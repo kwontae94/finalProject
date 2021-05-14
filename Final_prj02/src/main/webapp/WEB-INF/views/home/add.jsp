@@ -196,7 +196,7 @@
 
                     
                   <form action="/create" method="post">
-                  
+                  <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }"/>
 					<div class="form-group row g-mb-25">
                       <label for="example-text-input" class="col-2 col-form-label">layout</label>
                       <div class="col-10">

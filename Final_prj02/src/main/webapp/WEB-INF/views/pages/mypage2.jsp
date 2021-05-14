@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -106,20 +107,21 @@
               <img src="/assets/img/bg/transparent.png" data-bgcolor="#e9eae2" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="off" class="rev-slidebg">
               LAYERS -->
 				
-			<c:forEach items="${pictures}" var="map">
+		
+				
               <!-- LAYER NR. 1 -->
               <div class="tp-caption   tp-resizeme rs-parallaxlevel-14" id="slide-3186-layer-13" data-x="['right','right','right','right']" data-hoffset="['-328','-328','-328','-248']" data-y="['bottom','bottom','bottom','bottom']" data-voffset="['-417','-417','-417','-240']"
               data-width="none" data-height="none" data-whitespace="nowrap" data-type="image" data-responsive_offset="on" data-frames='[{"delay":600,"speed":2000,"frame":"0","from":"x:right;rZ:-90deg;","to":"o:1;","ease":"Power4.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
               data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 5;">
-                <img src="${map.fileName }" alt="" data-ww="['700px','700px','700px','500px']" data-hh="['700px','700px','700px','500px']" width="1500" height="1500">
+                <img src="" alt="" data-ww="['700px','700px','700px','500px']" data-hh="['700px','700px','700px','500px']" width="1500" height="1500">
               </div>
-			</c:forEach>
+			
 
               <!-- LAYER NR. 2 -->
               <div class="tp-caption   tp-resizeme rs-parallaxlevel-7" id="slide-3186-layer-14" data-x="['left','left','left','left']" data-hoffset="['-248','-248','-248','-190']" data-y="['top','top','top','top']" data-voffset="['-219','-219','-219','-205']" data-width="none"
               data-height="none" data-whitespace="nowrap" data-type="image" data-responsive_offset="on" data-frames='[{"delay":600,"speed":2000,"frame":"0","from":"x:left;rZ:90deg;","to":"o:1;rZ:20;","ease":"Power4.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
               data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 6;">
-                <img src="${bean1.fileName }" alt="" data-ww="['650px','650px','650px','500px']" data-hh="['650px','650px','650px','500px']" width="1000" height="1000">
+                <img src="" alt="" data-ww="['650px','650px','650px','500px']" data-hh="['650px','650px','650px','500px']" width="1000" height="1000">
               </div>
 
 <!--               LAYER NR. 3
@@ -173,7 +175,9 @@
     </div>
     <!-- End Revolution Slider -->
 
-
+		<c:out value="${pictures[0] }"></c:out>
+				
+				
 
     <!-- About -->
     <section class="container g-pt-100 g-pb-70">
