@@ -33,7 +33,7 @@ public class WebSecurityConfigure extends WebSecurityConfigurerAdapter {
 			.antMatchers("/style.css","/style/**").permitAll()	//js ,css style 적용
 			.antMatchers("/","/home","/guest/**").permitAll()			// 모든 이용자 접근 가능
 			.antMatchers("/idcheck","/join","/sendmail").permitAll()	//이용자가 직접 접근 불가능
-			.antMatchers("/member/**","/create","/home/add").hasAnyRole("USER","ADMIN")		//회원및 관리자 이용
+			.antMatchers("/member/**","/create","/home/add", "/uploadAjax", "/album/**").hasAnyRole("USER","ADMIN")		//회원및 관리자 이용
 			.anyRequest().authenticated();
 		
 		//Begin - User Id 및  Pwd 확인
