@@ -13,6 +13,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <script
+  src="https://code.jquery.com/jquery-3.6.0.js"
+  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"></script>
 
   <!-- Favicon -->
   <link rel="shortcut icon" href="/favicon.ico">
@@ -39,6 +44,7 @@
 
   <!-- CSS Customization -->
   <link rel="stylesheet" href="/assets/css/custom.css">
+
 </head>
 
 <body >
@@ -83,6 +89,28 @@
               
             </div>
             <!-- End Navigation -->
+            
+            <script type="text/javascript">
+            	console.log("${layout[0].getId()}");
+            	
+            	$(function(){
+            		var myId="<%=(String)session.getAttribute("userID")%>";
+            		
+	            	$('#update').hide();
+	            	
+	            	if("${layout[0].getId()}"==myId){
+	            			console.log("사건 발생");
+	            			$('#update').show();
+	            			
+	            	}
+            		
+            	});
+            		
+            		
+            	
+            </script>
+
+			<a href="/update?id=${layout[0].getId()}" id="update" class="update btn btn-md u-btn-outline-darkpurple g-mr-10 g-mb-15">관리</a>
 
             
           </div>

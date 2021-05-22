@@ -15,4 +15,18 @@
 	<select id="selectLayout" resultType="com.bit.web.entity.CreateVo" parameterType="java.lang.String">
 		select * from newpage where id = #{id}
 	</select>
+	
+	<select id="selectID" resultType="com.bit.web.entity.CreateVo">
+		select user,id from newpage
+	</select>
+	
+	<update id="updatePage" parameterType="com.bit.web.entity.CreateVo">
+		update newpage
+		set layout = #{layout},
+			title=#{title},
+			email=#{email},
+			phone=#{phone},
+			user=#{user}
+		where id=#{id}
+	</update>
 </mapper>

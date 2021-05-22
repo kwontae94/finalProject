@@ -12,6 +12,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <script
+  src="https://code.jquery.com/jquery-3.6.0.js"
+  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"></script>
 
   <!-- Favicon -->
   <link rel="shortcut icon" href="/favicon.ico">
@@ -82,7 +87,27 @@
               </ul>
             </div>
             <!-- End Navigation -->
+			
+			<script type="text/javascript">
+            	console.log("${layout[0].getId()}");
+            	
+            	$(function(){
+            		var myId="<%=(String)session.getAttribute("userID")%>";
+            		
+	            	$('#update').hide();
+	            	
+	            	if("${layout[0].getId()}"==myId){
+	            			console.log("사건 발생");
+	            			$('#update').show();
+	            			
+	            	}
+            		
+            	});
+            	
+            </script>
 
+			<a href="/update?id=${layout[0].getId()}" id="update" class="update btn btn-md u-btn-outline-darkpurple g-mr-10 g-mb-15">관리</a>
+			
         
           </div>
         </nav>
@@ -104,145 +129,38 @@
 
 
         
-          <!-- Timeline #01 -->
-          <section class="g-py-100">
-            <div class="container">
-              <div class="text-center g-mb-50">
-                <h2 class="h4">Timeline</h2>
-              </div>
-				
-			<c:forEach items="${pictures }" var="bean" varStatus="status">
-			 	
-              <div class="row u-timeline-v1-wrap g-mx-minus-15">
-                <!-- Timeline Box -->
-                <div class="col-md-6 g-orientation-right g-pl-60 g-pl-15--md g-pr-40--md g-mb-60 g-mb-0--md">
-                  <div class="u-timeline-v1__icon g-color-gray-light-v5 g-ml-13 g-ml-minus-10--md">
-                    <i class="fa fa-circle"></i>
-                  </div>
-
-                  <div class="g-pos-rel">
-                    <!-- Timeline Arrow -->
-                    <div class="g-hidden-sm-down u-triangle-inclusive-v1--left g-top-30 g-z-index-2">
-                      <div class="u-triangle-inclusive-v1--left__front g-brd-white-left g-brd-white-right"></div>
-                      <div class="u-triangle-inclusive-v1--left__back g-brd-gray-light-v4-left g-brd-gray-light-v4-right"></div>
-                    </div>
-
-                    <div class="g-hidden-md-up u-triangle-inclusive-v1--right g-top-30 g-z-index-2">
-                      <div class="u-triangle-inclusive-v1--right__front g-brd-white-right"></div>
-                      <div class="u-triangle-inclusive-v1--right__back g-brd-gray-light-v4-right"></div>
-                    </div>
-                    <!-- End Timeline Arrow -->
-
-                    <!-- Timeline Content -->
-                    <article class="u-timeline-v1 g-pa-5">
-                      <figure class="g-pos-rel">
-                        <img class="img-fluid w-100" src='${bean.fileName }' alt="Image Description">
-							
-
-                      </figure>
-
-                      <div class="g-py-25 g-px-20">
-                        <h3 class="g-font-weight-300 g-mb-15">
-                          <a class="u-link-v5 g-color-main g-color-primary--hover" href="#">${bean.title }</a>
-                        </h3>
-
-                        <div class="g-mb-30">
-                          <p>${bean.comment }</p>
-                        </div>
-
-                        <hr class="g-brd-gray-light-v4">
-
-                        <div class="media g-font-size-12">
-                          <img class="d-flex mr-3 rounded-circle g-width-30 g-height-30" src="../../assets/img-temp/100x100/img7.jpg" alt="Image Description">
-                          <div class="media-body align-self-center text-uppercase">
-                            <a class="u-link-v5 g-color-main g-color-primary--hover" href="#">${bean.userName }</a>
-                          </div>
-
-                          <div class="align-self-center">
-                            <a class="u-link-v5 g-color-main g-color-primary--hover g-mr-10" href="#">
-                              <i class="icon-bubbles g-mr-2"></i>
-                              16
-                            </a>
-                            <a class="u-link-v5 g-color-main g-color-primary--hover" href="#">
-                              <i class="icon-eye g-mr-2"></i>
-                              129
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </article>
-                    <!-- End Timeline Content -->
-                  </div>
-                </div>
-                <!-- End Timeline Box -->
-
-                <!-- Timeline Box -->
-                <div class="col-md-6 g-orientation-left g-pl-60 g-pl-40--md g-mt-60--md g-mb-60 g-mb-0--md">
-                  <div class="u-timeline-v1__icon g-color-gray-light-v5 g-mr-13 g-mr-minus-8--md">
-                    <i class="fa fa-circle"></i>
-                  </div>
-
-                  <div class="g-pos-rel">
-                    <!-- Timeline Arrow -->
-                    <div class="u-triangle-inclusive-v1--right g-top-30 g-z-index-2">
-                      <div class="u-triangle-inclusive-v1--right__front g-brd-white-right"></div>
-                      <div class="u-triangle-inclusive-v1--right__back g-brd-gray-light-v4-right"></div>
-                    </div>
-                    <!-- End Timeline Arrow -->
-
-                    <!-- Timeline Content -->
-                    <article class="u-timeline-v1 g-pa-5">
-                      <figure class="g-pos-rel">
-                        <img class="img-fluid w-100" src="../../assets/img-temp/400x270/img9.jpg" alt="Image Description">
-
- 
-                      </figure>
-
-                      <div class="g-py-25 g-px-20">
-                        <h3 class="g-font-weight-300 g-mb-15">
-                          <a class="u-link-v5 g-color-main g-color-primary--hover" href="#">Trends of Digital Marketing in 2017</a>
-                        </h3>
-
-                        <div class="g-mb-30">
-                          <p>Spen been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                        </div>
-
-                        <hr class="g-brd-gray-light-v4">
-
-                        <div class="media g-font-size-12">
-                          <img class="d-flex mr-3 rounded-circle g-width-30 g-height-30" src="../../assets/img-temp/100x100/img5.jpg" alt="Image Description">
-                          <div class="media-body align-self-center text-uppercase">
-                            <a class="u-link-v5 g-color-main g-color-primary--hover" href="#">Kate William</a>
-                          </div>
-
-                          <div class="align-self-center">
-                            <a class="u-link-v5 g-color-main g-color-primary--hover g-mr-10" href="#">
-                              <i class="icon-bubbles g-mr-2"></i>
-                              21
-                            </a>
-                            <a class="u-link-v5 g-color-main g-color-primary--hover" href="#">
-                              <i class="icon-eye g-mr-2"></i>
-                              178
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </article>
-                    <!-- End Timeline Content -->
-                  </div>
-                </div>
-                <!-- End Timeline Box -->
-			</c:forEach>
-
-  
-              </div>
-            </div>
-          </section>
-          <!-- End Timeline #01 -->
-        
+   
+   <section class="g-py-100">
+		<div class="container">
+				<div class="row">
+					
+					<c:forEach items="${pictures }" var="bean" varStatus="status">
+					  <div class="col-lg-6 g-mb-30">
+					    <!-- Article -->
+					    <article class="u-block-hover g-mb-10">
+					      <figure class="u-bg-overlay g-bg-black-opacity-0_3--after">
+					        <img class="img-fluid w-100 u-block-hover__main--zoom-v1" src="${bean.fileName }" alt="Image Description">
+					      </figure>
+					
+					    </article>
+					    <!-- End Article -->
+					      <!-- <hr class="g-brd-gray-light-v4"> -->
+					    
+						  <h3 class="g-font-weight-300 g-mb-15">
+			                <a class="u-link-v5 g-color-main g-color-primary--hover" href="#">${bean.title }</a>
+			              </h3>
+			              
+			               <div class="g-mb-30">
+				                <p>${bean.comment }</p>
+				           </div>
+					  </div>
+					  
+					</c:forEach>
+		  
+				</div>  
+   		 </div>
+    </section>
           
-
-
     
 
     <!-- Footer -->

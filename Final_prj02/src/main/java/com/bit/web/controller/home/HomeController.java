@@ -1,6 +1,10 @@
 package com.bit.web.controller.home;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.bit.web.entity.CreateVo;
 import com.bit.web.entity.PictureVo;
 import com.bit.web.service.CreateService;
+import com.bit.web.service.CreateServiceImpl;
 import com.bit.web.service.PictureService;
 
 @Controller
@@ -105,12 +110,19 @@ public class HomeController {
 				return "pages/mypage";
 			}else if(bean.getLayout()==2) {
 				model.addAttribute("layout",list);
-				model.addAttribute("pictures",pictureService.selectAll2(id));
+				
+				if(pictureService.selectAll2(id).size()==0) {
+					Map<String,String> basic=new HashMap<String,String>();
+					basic.put("picture0","/assets/defaultImgs/back01.jpg");
+					basic.put("picture1","/assets/defaultImgs/back03.jpg");
+					basic.put("picture2","/assets/defaultImgs/back05.jpg");
+					System.out.println("basic"+basic);
+					model.addAttribute("pictures",basic);
+				}else {					
+					model.addAttribute("pictures",pictureService.selectAll2(id));
+				}
+				
 				return "pages/mypage2";
-			}else if(bean.getLayout()==3) {
-				model.addAttribute("layout",list);
-				model.addAttribute("pictures","");
-				return "pages/mypage3";
 			}
 			//list.size가 0이상이면 newpage 테이블에 스키마 존재 layout 컬럼 값에 따라 layout 결정
 			
@@ -124,6 +136,84 @@ public class HomeController {
 				
 	}
 	
+	@GetMapping("pictureList")
+	public String pictureList(Model model) {
+		
+		
+		
+		List selectID=createService.selectID();
+		
+		System.out.println("selectID="+selectID);
+		
+		Iterator<CreateVo> it=selectID.iterator();
+		
+		while(it.hasNext()) {
+			CreateVo name=it.next();
+			String getId=name.getId();
+			model.addAttribute("getId", pictureService.selectAll(getId));
+		}
+		
+		
+		model.addAttribute("selectID",createService.selectID());
+		
+		return "/home/pictureList";
+	}
+	
+	@GetMapping("others")
+	public String others(@RequestParam("id") String id, Model model) {
+		
+		List<CreateVo> list=createService.selectLayout(id);//newpage table의 스키마 list로 받아옴
+		
+		if(list.size()>0) {
+			CreateVo bean=list.get(0);
+			if(bean.getLayout()==1) {
+				model.addAttribute("layout",list);
+				model.addAttribute("pictures",pictureService.selectAll(id));
+				return "pages/mypage";
+			}else if(bean.getLayout()==2) {
+				model.addAttribute("layout",list);
+				model.addAttribute("pictures",pictureService.selectAll2(id));
+				return "pages/mypage2";
+			}
+			//list.size가 0이상이면 newpage 테이블에 스키마 존재 layout 컬럼 값에 따라 layout 결정
+			
+		}
+		
+		return null;
+	}
+	
+	@GetMapping("update")
+	public String updateLayout(@RequestParam("id") String id, Model model) {
+		
+		model.addAttribute("layout",createService.selectLayout(id)); 
+		
+		return "/home/update";
+	}
+	
+	@PostMapping("update")
+	public String updatePage(@RequestParam("layout") int layout,
+						@RequestParam("title") String title,
+						@RequestParam("email") String email,
+						@RequestParam("phone") String phone,
+						@RequestParam("user") String user,
+						@RequestParam("id") String id,
+						Model model
+			
+			) {
+
+		System.out.println("/update ]url before...");
+		System.out.println(layout);
+		System.out.println(title);
+		System.out.println(email);
+		System.out.println(phone);
+		System.out.println(user);
+		System.out.println(id);
+		
+		createService.updatePage(layout,title,email,phone,user,id);
+		System.out.println("/url after...");
+
+		return "home.home";
+	}
 	
 
 }

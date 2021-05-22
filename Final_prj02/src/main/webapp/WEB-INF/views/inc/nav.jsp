@@ -15,7 +15,7 @@
 	        <a class="nav-link" href="/page">나의 여행일기</a>
 	      </li>
 	      <li class="nav-item">
-	        <a class="nav-link" href="#">여행이야기들</a>
+	        <a class="nav-link" href="/pictureList">여행이야기들</a>
 	      </li>
 	    </ul>
         

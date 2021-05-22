@@ -35,14 +35,16 @@ public class PictureServiceImpl implements PictureService{
 		
 		Map fileNameList=new HashMap<String,String>();
 		
-		for(int i=0;i<3;i++) {
-			PictureVo bean=(PictureVo) list.get(i);
-			bean.getFileName();
-			
-			fileNameList.put("picture"+i,bean.getFileName());
+		if(pictureDao.selectAll2(id).size()>=3) {
+			for(int i=0;i<3;i++) {
+				PictureVo bean=(PictureVo) list.get(i);
+				bean.getFileName();
+				
+				fileNameList.put("picture"+i,bean.getFileName());
+			}
 		}
 		
-		System.out.println(fileNameList.toString());
+		System.out.println("맵 확인"+fileNameList.toString());
 		
 		return fileNameList;
 	}

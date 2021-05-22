@@ -11,5 +11,9 @@ public interface CreateService {
 	void createOne(int layout, String title, String email, String phone, String user, String id);
 	
 	List<CreateVo> selectLayout(String id);
+	
+	List<CreateVo> selectID();
+	
+	void updatePage(int layout, String title, String email, String phone, String user, String id);
 
 }

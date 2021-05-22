@@ -13,12 +13,15 @@ import com.bit.web.entity.CreateVo;
 public interface CreateDao {
 
 
-	String checkPage(String id);
-	
+	String checkPage(String id);	
 
 	void createOne(CreateVo bean);
 	
 	List<CreateVo> selectLayout(String id);
+	
+	List<CreateVo> selectID();
+	
+	void updatePage(CreateVo bean);
 	
 
 }

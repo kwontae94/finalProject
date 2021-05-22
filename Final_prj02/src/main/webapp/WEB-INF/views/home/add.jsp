@@ -101,7 +101,7 @@
         <a class="nav-link" href="/page">나의 여행일기</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">여행이야기들</a>
+        <a class="nav-link" href="/pictureList">여행이야기들</a>
       </li>
     </ul>
     	<button class="btn btn-outline-info mr-2 mr-sm-0" type="button" onclick="location.href='/guest/signup' ">Sign up</button>
@@ -142,39 +142,54 @@
   
     <!-- Content section -->
 <main class="container my-5" >
-  	
-  	
-            <div class="shortcode-html my-5">
-              <!-- Banners -->
+         
+            
+            <div class="shortcode-html">
               <div class="row">
                 <div class="col-lg-6 g-mb-30">
                   <!-- Article -->
-                  <article class="g-bg-size-cover" data-bg-img-src="/assets/img-temp/500x450/img4.jpg">
-                    <div class="w-100 g-min-height-360 g-flex-middle g-width-50x--md g-bg-primary-opacity-0_8 g-pa-25 ml-auto">
-                      <div class="g-flex-middle-item">
-                        <h4 class="h5 g-color-white g-font-weight-700 text-uppercase g-mb-10">layout1</h4>
-                        <p class="g-color-white-opacity-0_9 mb-0">1번 형식입니다</p>
-                      </div>
-                    </div>
+                  <article class="u-block-hover">
+                    <figure class="u-bg-overlay g-bg-black-opacity-0_3--after">
+                      <img class="img-fluid w-100 u-block-hover__main--zoom-v1" src="/assets/defaultImgs/layout1.png" alt="Image Description">
+                    </figure>
+
+
+                    <header class="g-pos-abs g-right-20 g-bottom-10 g-left-20">
+                      <h3 class="h2 g-font-weight-600">
+                        <a class="g-color-white" href="#">Layout1</a>
+                      </h3>
+                      <span class="g-color-white">
+                        1번 Layout입니다
+                      </span>
+                    </header>
+                  </article>
+                  <!-- End Article -->
+                </div>
+                
+               <div class="col-lg-6 g-mb-30">
+                  <!-- Article -->
+                  <article class="u-block-hover">
+                    <figure class="u-bg-overlay g-bg-black-opacity-0_3--after">
+                      <img class="img-fluid w-100 u-block-hover__main--zoom-v1" src="/assets/defaultImgs/layout2.png" alt="Image Description">
+                    </figure>
+
+
+                    <header class="g-pos-abs g-right-20 g-bottom-10 g-left-20">
+                      <h3 class="h2 g-font-weight-600">
+                        <a class="g-color-white" href="#">Layout2</a>
+                      </h3>
+                      <span class="g-color-white">
+                        2번 Layout입니다
+                      </span>
+                    </header>
                   </article>
                   <!-- End Article -->
                 </div>
 
-                <div class="col-lg-6 g-mb-30">
-                  <!-- Article -->
-                  <article class="g-bg-size-cover" data-bg-img-src="/assets/img-temp/500x450/img5.jpg">
-                    <div class="w-100 g-min-height-360 g-flex-middle g-width-50x--md g-bg-primary-opacity-0_8 g-pa-25 ml-auto">
-                      <div class="g-flex-middle-item">
-                        <h4 class="h5 g-color-white g-font-weight-700 text-uppercase g-mb-10">layout2</h4>
-                        <p class="g-color-white-opacity-0_9 mb-0">2번 형식이다</p>
-                      </div>
-                    </div>
-                  </article>
-                  <!-- End Article -->
-                </div>
+
               </div>
-              <!-- End Banners -->
             </div>
+          
           
 <script type="text/javascript">
 

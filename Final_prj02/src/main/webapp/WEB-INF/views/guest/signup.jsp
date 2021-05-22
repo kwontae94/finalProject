@@ -94,8 +94,8 @@
 						url:'/idcheck',
  						beforeSend:function(xhr){
 							console.log(csrfHeaderName,csrfTokenValue);
-							/* xhr.setRequestHeader('JSESSIONID',csrfTokenValue);
- */							xhr.setRequestHeader(csrfHeaderName,csrfTokenValue);
+  						    xhr.setRequestHeader('JSESSIONID',csrfTokenValue);
+ 							xhr.setRequestHeader(csrfHeaderName,csrfTokenValue);
 						}, 
 						data:{userId:account},
 						success:function(msg){

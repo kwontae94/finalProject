@@ -48,6 +48,28 @@ public class CreateServiceImpl implements CreateService{
 		//List를 넘겨준다 controller로
 	}
 
+	@Override
+	public List<CreateVo> selectID() {
+		
+		System.out.println(createDao.selectID());
+		
+		return createDao.selectID();
+	}
+
+	@Override
+	public void updatePage(int layout, String title, String email, String phone, String user, String id) {
+		 
+		CreateVo bean=new CreateVo();
+		bean.setLayout(layout);
+		bean.setTitle(title);
+		bean.setEmail(email);
+		bean.setPhone(phone);
+		bean.setUser(user);
+		bean.setId(id);
+		
+		createDao.updatePage(bean);
+	}
+
 	
 	
 
