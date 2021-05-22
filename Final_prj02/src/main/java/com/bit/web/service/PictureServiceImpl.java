@@ -28,21 +28,19 @@ public class PictureServiceImpl implements PictureService{
 	@Override
 	public Map<String, String> selectAll2(String id) {
 		
-		
-		
-		
 		List list=pictureDao.selectAll2(id);
+		System.out.println("selectAll2 확인 : "+list);
 		
 		Map fileNameList=new HashMap<String,String>();
 		
-		if(pictureDao.selectAll2(id).size()>=3) {
-			for(int i=0;i<3;i++) {
+//		if(pictureDao.selectAll2(id).size()>=3) {
+			for(int i=0;i<pictureDao.selectAll2(id).size();i++) {
 				PictureVo bean=(PictureVo) list.get(i);
 				bean.getFileName();
 				
 				fileNameList.put("picture"+i,bean.getFileName());
 			}
-		}
+//		}
 		
 		System.out.println("맵 확인"+fileNameList.toString());
 		

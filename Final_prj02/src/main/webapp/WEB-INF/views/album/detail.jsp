@@ -94,11 +94,11 @@
 					<div class="collapse navbar-collapse align-items-center flex-sm-row g-pt-10 g-pt-5--lg g-mr-40--lg" id="navBar">
 						<ul class="navbar-nav text-uppercase g-pos-rel g-font-weight-600 mr-auto">
 							<!-- Intro -->
-							<li class="nav-item  g-mx-10--lg g-mx-15--xl"><a href="/home" class="nav-link g-py-7 g-px-0">HOME</a></li>
+							<li class="nav-item  g-mx-10--lg g-mx-15--xl"><a href="/others?id=${layout[0].getId()}" class="nav-link g-py-7 g-px-0">HOME</a></li>
 							<!-- End Intro -->
 
 							<!--menu bar  -->
-							<li class="nav-item  g-mx-10--lg g-mx-15--xl"><a href="/album" class="nav-link g-py-7 g-px-0">사진첩</a></li>
+							<li class="nav-item  g-mx-10--lg g-mx-15--xl"><a href="/album?id=${layout[0].getId()}" class="nav-link g-py-7 g-px-0">사진첩</a></li>
 
 							<li class="nav-item  g-mx-10--lg g-mx-15--xl"><a href="#" class="nav-link g-py-7 g-px-0">방명록</a></li>
 							<!--End menu bar  -->
@@ -111,56 +111,114 @@
 	</header>
 	<!-- End Header -->
 
-
-	<div class="masonry-grid-item col-sm-6 g-mb-30" id="layout">
-		<!-- Blog Classic Blocks -->
-		<article class="u-shadow-v11">
-			<c:forEach var="list" items="${list}">
-				<c:set var="upload" value="${list.uploadPath }" />
-				<c:set var="upload1" value="${fn:substring(upload, upload.length()-25, upload.length()) }" />
-				<img class="img-fluid w-100" src="${upload1}/${list.fileName}">
-
-				<div class="g-bg-white g-pa-30">
-					<span class="d-block g-color-gray-dark-v4 g-font-weight-600 g-font-size-12 text-uppercase mb-2">${list.date }</span>
-					<h2 class="h5 g-color-black g-font-weight-600 mb-3">
-						<a class="u-link-v5 g-color-black g-color-primary--hover g-cursor-pointer" href="#">${list.caption }</a>
-					</h2>
-					<p class="g-color-gray-dark-v4 g-line-height-1_8">${list.location }</p>
-
-					<hr class="g-my-20">
-
-					<ul class="list-inline d-flex justify-content-between mb-0">
-						<li class="list-inline-item g-color-gray-dark-v4"><a
-							class="d-inline-block g-color-gray-dark-v4 g-font-size-13 g-cursor-pointer g-text-underline--none--hover" href="#"> <i
-								class="align-middle g-font-size-default mr-1 icon-finance-206 u-line-icon-pro"></i> 10 Comments
-						</a></li>
-					</ul>
-
-					<hr class="g-my-20">
-
-					<div class="u-header__section u-header__section--light g-bg-white g-transition-0_3 g-py-10" id="div_btn">
-						<a class="btn btn-secondary g-mr-10 g-mb-15" id="back" href="javascript:history.back();">back</a>
-						<a class="btn btn-secondary g-mr-10 g-mb-15" id="delete" href="/album/delete?fileName=${list.fileName}">delete</a>
+	<main>
+		<div class="masonry-grid-item col-sm-6 g-mb-30" id="layout">
+			<!-- Blog Classic Blocks -->
+			<article class="u-shadow-v11">
+				<c:forEach var="list" items="${list}">
+					<c:set var="upload" value="${list.uploadPath }" />
+					<c:set var="upload1" value="${fn:substring(upload, upload.length()-25, upload.length()) }" />
+					<img class="img-fluid w-100" src="${upload1}/${list.fileName}">
+	
+					<div class="g-bg-white g-pa-30">
+						<span class="d-block g-color-gray-dark-v4 g-font-weight-600 g-font-size-12 text-uppercase mb-2">${list.date }</span>
+						<h2 class="h5 g-color-black g-font-weight-600 mb-3">
+							<a class="u-link-v5 g-color-black g-color-primary--hover g-cursor-pointer" href="#">${list.caption }</a>
+						</h2>
+						<p class="g-color-gray-dark-v4 g-line-height-1_8">${list.location }</p>
+	
+						<hr class="g-my-20">
+	
+						<ul class="list-inline d-flex justify-content-between mb-0">
+							<li class="list-inline-item g-color-gray-dark-v4"><a
+								class="d-inline-block g-color-gray-dark-v4 g-font-size-13 g-cursor-pointer g-text-underline--none--hover" href="#"> <i
+									class="align-middle g-font-size-default mr-1 icon-finance-206 u-line-icon-pro"></i> 10 Comments
+							</a></li>
+						</ul>
+	
+						<hr class="g-my-20">
+	
+						<div class="u-header__section u-header__section--light g-bg-white g-transition-0_3 g-py-10" id="div_btn">
+							<a class="btn btn-secondary g-mr-10 g-mb-15" id="back" href="javascript:history.back();">back</a>
+							<a class="btn btn-secondary g-mr-10 g-mb-15" id="delete" href="/album/delete?fileName=${list.fileName}&&id=${layout[0].getId()}">delete</a>
+						</div>
 					</div>
-				</div>
-			</c:forEach>
-		</article>
-		<!-- End Blog Classic Blocks -->
-	</div>
+				</c:forEach>
+			</article>
+			<!-- End Blog Classic Blocks -->
+		</div>
+	</main>
+	
+	<c:forEach items="${layout }" var="bean1">
+	
+	<!-- Footer -->
+    <footer class="g-bg-bluegray">
+      <div class="container g-pt-100 g-pb-60">
 
+        
+        <div class="row justify-content-start g-mb-50 g-mb-70--md">
+          <div class="col-md-4 col-lg-3 g-mb-30">
+            <h2 class="h3 g-color-white g-font-weight-600 g-mb-15">Contacts</h2>
 
+            <!-- Links -->
+            <ul class="list-unstyled">
+              <li class="media mb-4">
+                <i class="d-flex g-color-white-opacity-0_7 mt-1 mr-3 icon-hotel-restaurant-235 u-line-icon-pro"></i>
+                <div class="media-body g-color-white-opacity-0_9">
+                  서울특별시 종로구 종로2가 9 7층 비트캠프
+                </div>
+              </li>
+              <li class="media mb-4">
+                <i class="d-flex g-color-white-opacity-0_7 mt-1 mr-3 icon-communication-062 u-line-icon-pro"></i>
+                <div class="media-body g-color-white-opacity-0_9">
+                  ${bean1.email }
+                </div>
+              </li>
+              <li class="media mb-4">
+                <i class="d-flex g-color-white-opacity-0_7 mt-1 mr-3 icon-communication-033 u-line-icon-pro"></i>
+                <div class="media-body g-color-white-opacity-0_9">
+                  ${bean1.phone }
+                </div>
+              </li>
+            </ul>
+            <!-- End Links -->
+          </div>
 
+          <div class="col-md-3 g-mb-30">
+            <!-- Links -->
+            <ul class="list-unstyled">
+              
+              <li class="my-3">
+                <a class="d-inline-block g-color-white-opacity-0_9 g-color-primary--hover rounded g-text-underline--none--hover g-transition-0_5 g-pl-7--hover" href="#">Services</a>
+              </li>
+              
+              <li class="my-3">
+                <a class="d-inline-block g-color-white-opacity-0_9 g-color-primary--hover rounded g-text-underline--none--hover g-transition-0_5 g-pl-7--hover" href="#">Privacy Policy</a>
+              </li>
+            </ul>
+		  
+            <!-- End Links -->
+          </div>
 
+        </div>
 
+        <div class="row justify-content-between">
+          <div class="col-md-6 g-mb-10">
+            <p class="g-color-white-opacity-0_7 g-font-size-13">Any references to associated images, mockups or logos are for demonstration purposes only and is not intended to refer to any actual organization or event.</p>
+          </div>
 
+          <div class="col-md-6 text-md-right g-mb-10">
+            <p class="g-color-white-opacity-0_7 g-font-size-13">Website designed by
+              <a class="u-link-v5 g-brd-bottom g-brd-white g-color-white g-color-primary--hover" href="#">${bean1.user }</a>
+            </p>
+          </div>
+        </div>
 
-
-
-
-
-
-
-
+        <p class="g-color-white-opacity-0_7 g-font-size-13">2020 &copy; ${bean1.user }. All Rights Reserved.</p>
+      </div>
+    </footer>
+    <!-- End Footer -->
+    </c:forEach>
 
 
 	<!-- JS Global Compulsory -->

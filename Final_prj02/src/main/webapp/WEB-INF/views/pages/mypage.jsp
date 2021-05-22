@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 
@@ -71,13 +72,13 @@
               <ul class="navbar-nav text-uppercase g-pos-rel g-font-weight-600 mr-auto">
                 <!-- Intro -->
                 <li class="nav-item  g-mx-10--lg g-mx-15--xl">
-                  <a href="/home" class="nav-link g-py-7 g-px-0">HOME</a>
+                  <a href="#" class="nav-link g-py-7 g-px-0">HOME</a>
                 </li>
                 <!-- End Intro -->
                 
                 <!--menu bar  -->
                 <li class="nav-item  g-mx-10--lg g-mx-15--xl">
-                  <a href="/album" class="nav-link g-py-7 g-px-0">사진첩</a>
+                  <a href="/album?id=${layout[0].getId()}" class="nav-link g-py-7 g-px-0">사진첩</a>
                 </li>
 
                 <li class="nav-item  g-mx-10--lg g-mx-15--xl">
@@ -103,7 +104,7 @@
 	            	}
             		
             	});
-            	
+            	/* 관리 버튼 숨기기  */
             </script>
 
 			<a href="/update?id=${layout[0].getId()}" id="update" class="update btn btn-md u-btn-outline-darkpurple g-mr-10 g-mb-15">관리</a>
@@ -130,7 +131,7 @@
 
         
    
-   <section class="g-py-100">
+ <%--   <section class="g-py-100">
 		<div class="container">
 				<div class="row">
 					
@@ -159,7 +160,44 @@
 		  
 				</div>  
    		 </div>
-    </section>
+    </section> --%>
+    
+    <section class="g-py-100">
+		<div class="container">
+    <div class="container g-py-100 masonry-grid-item col-sm-6 g-mb-30" id="layout">
+      <!-- Blog Classic Blocks -->
+      <article class="u-shadow-v11">
+         <c:forEach var="list" items="${list1}">
+            <c:set var="upload" value="${list.uploadPath }" />
+            <c:set var="upload1" value="${fn:substring(upload, upload.length()-25, upload.length()) }" />
+            <img class="img-fluid w-100" src="${upload1}/${list.fileName}">
+
+            <div class="g-bg-white g-pa-30">
+               <span class="d-block g-color-gray-dark-v4 g-font-weight-600 g-font-size-12 text-uppercase mb-2">${list.date }</span>
+               <h2 class="h5 g-color-black g-font-weight-600 mb-3">
+                  <a class="u-link-v5 g-color-black g-color-primary--hover g-cursor-pointer" href="#">${list.caption }</a>
+               </h2>
+               <p class="g-color-gray-dark-v4 g-line-height-1_8">${list.location }</p>
+
+               <hr class="g-my-20">
+
+               <ul class="list-inline d-flex justify-content-between mb-0">
+                  <li class="list-inline-item g-color-gray-dark-v4"><a
+                     class="d-inline-block g-color-gray-dark-v4 g-font-size-13 g-cursor-pointer g-text-underline--none--hover" href="#"> <i
+                        class="align-middle g-font-size-default mr-1 icon-finance-206 u-line-icon-pro"></i> 10 Comments
+                  </a></li>
+               </ul>
+
+               <hr class="g-my-20">
+
+                           </div>
+         </c:forEach>
+      </article>
+      <!-- End Blog Classic Blocks -->
+   </div>
+   </div>
+   </section>
+    
           
     
 

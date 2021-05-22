@@ -72,13 +72,13 @@
               <ul class="navbar-nav text-uppercase g-pos-rel g-font-weight-600 mr-auto">
                 <!-- HOME -->
                 <li class="nav-item  g-mx-10--lg g-mx-15--xl">
-                  <a href="/home" class="nav-link g-py-7 g-px-0">HOME</a>
+                  <a href="#" class="nav-link g-py-7 g-px-0">HOME</a>
                 </li>
                 <!-- End HOME -->
 
 				<!--menu bar  -->
                 <li class="nav-item  g-mx-10--lg g-mx-15--xl">
-                  <a href="/album" class="nav-link g-py-7 g-px-0">사진첩</a>
+                  <a href="/album?id=${layout[0].getId()}" class="nav-link g-py-7 g-px-0">사진첩</a>
                 </li>
 
                 <li class="nav-item  g-mx-10--lg g-mx-15--xl">

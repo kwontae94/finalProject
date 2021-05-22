@@ -16,11 +16,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 
 import com.bit.web.entity.AttachFileVo;
+import com.bit.web.entity.CreateVo;
 import com.bit.web.service.AttachFileService;
+import com.bit.web.service.CreateService;
 
 import lombok.Setter;
 
@@ -31,41 +34,69 @@ public class AlbumController {
 	@Setter(onMethod_ = {@Autowired})
 	private AttachFileService attachFileService;
 	
+	@Autowired
+	CreateService createService;
+	
 	@RequestMapping("")
-	public String album(HttpServletRequest request, Model model) {
+	public String album(@RequestParam("id")String id, HttpServletRequest request, Model model) {
 		System.out.println("AlbumComtroller");
 
-		HttpSession session=request.getSession();
-		String id=(String) session.getAttribute("userID");
+//		HttpSession session=request.getSession();
+//		String id=(String) session.getAttribute("userID");
 
-		List<AttachFileVo> list = attachFileService.selectFile(id);
+		List<CreateVo> layout=createService.selectLayout(id); //newpage layout 정보 가지고 옴 
+		List<AttachFileVo> list = attachFileService.selectFile(id); //file정보 가지고 옴
 		
-		System.out.println(list);
-		model.addAttribute("list",list);
-		return "album/album";
+		CreateVo bean=layout.get(0); //list에서 layout 정보 뽑기
+		
+		if(bean.getLayout()==1) {
+			model.addAttribute("layout",layout); //권탬 layout 정보 넘겨줌
+			model.addAttribute("list",list); //file 정보 넘겨줌
+			return "album/album";
+			
+		}else if(bean.getLayout()==2) {
+			model.addAttribute("layout",layout); //권탬 layout 정보 넘겨줌
+			model.addAttribute("list",list); //file 정보 넘겨줌
+			return "album/album2";
+		}
+		
+		return null;
 	}
 	
 	@RequestMapping("/detail")
-	public String albumdetail(HttpServletRequest request, Model model, String fileName) {
+	public String albumdetail(@RequestParam("id") String id, HttpServletRequest request, Model model, String fileName) {
+		
 		System.out.println("detailpage");
 		System.out.println("파일 네임이 잘 넘어오는지? "+ fileName);
 		
 		List<AttachFileVo> list = attachFileService.selectFileName(fileName);
+		List<CreateVo> layout=createService.selectLayout(id);
 		
 		System.out.println(list);
-		model.addAttribute("list",list);
 		
-		return "album/detail";
-
+		CreateVo bean=layout.get(0); //list에서 layout 정보 뽑기
+		
+		if(bean.getLayout()==1) {
+			model.addAttribute("layout",layout); //권탬 layout 정보 넘겨줌
+			model.addAttribute("list",list); //file 정보 넘겨줌
+			return "album/detail";
+			
+		}else if(bean.getLayout()==2) {
+			model.addAttribute("layout",layout); //권탬 layout 정보 넘겨줌
+			model.addAttribute("list",list); //file 정보 넘겨줌
+			return "album/detail2";
+		}
+		
+		return null;
 	}
 	
 	@RequestMapping("/delete")
-	public String albumdelete(HttpServletRequest request, Model model, String fileName) {
+	public String albumdelete(@RequestParam("id") String id, HttpServletRequest request, Model model, String fileName) {
 		System.out.println("딜리트 파일네임 잘 넘어오는지? "+ fileName);
 		
 		attachFileService.delete(fileName);
 		
-		return "redirect:/album";
+		return "redirect:/album?id="+id;
 
 	}
 	

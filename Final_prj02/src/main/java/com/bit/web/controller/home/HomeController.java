@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bit.web.entity.CreateVo;
 import com.bit.web.entity.PictureVo;
+import com.bit.web.service.AttachFileService;
 import com.bit.web.service.CreateService;
 import com.bit.web.service.CreateServiceImpl;
 import com.bit.web.service.PictureService;
@@ -33,6 +34,10 @@ public class HomeController {
 	
 	@Autowired
 	PictureService pictureService;
+	
+	@Autowired
+	AttachFileService attachFileService;
+	
 
 	@RequestMapping("")
 	public String home1() {
@@ -106,20 +111,23 @@ public class HomeController {
 			CreateVo bean=list.get(0);
 			if(bean.getLayout()==1) {
 				model.addAttribute("layout",list);
-				model.addAttribute("pictures",pictureService.selectAll(id));
+//				model.addAttribute("pictures",pictureService.selectAll(id)); //mypage1 time line 넘어가는 부분
+				System.out.println("석진이형 받아옴" + attachFileService.selectFile(id));
+				model.addAttribute("list1",attachFileService.selectFile(id));
 				return "pages/mypage";
 			}else if(bean.getLayout()==2) {
 				model.addAttribute("layout",list);
-				
-				if(pictureService.selectAll2(id).size()==0) {
+				if(pictureService.selectAll2(id).size()<3) {
 					Map<String,String> basic=new HashMap<String,String>();
 					basic.put("picture0","/assets/defaultImgs/back01.jpg");
 					basic.put("picture1","/assets/defaultImgs/back03.jpg");
 					basic.put("picture2","/assets/defaultImgs/back05.jpg");
 					System.out.println("basic"+basic);
 					model.addAttribute("pictures",basic);
-				}else {					
-					model.addAttribute("pictures",pictureService.selectAll2(id));
+				}else {
+					model.addAttribute("pictures",pictureService.selectAll2(id)); //이부분도 석진이형 코드로 변경 필요
+					
+					
 				}
 				
 				return "pages/mypage2";
@@ -172,7 +180,18 @@ public class HomeController {
 				return "pages/mypage";
 			}else if(bean.getLayout()==2) {
 				model.addAttribute("layout",list);
-				model.addAttribute("pictures",pictureService.selectAll2(id));
+				
+				if(pictureService.selectAll2(id).size()<3) {
+					Map<String,String> basic=new HashMap<String,String>();
+					basic.put("picture0","/assets/defaultImgs/back01.jpg");
+					basic.put("picture1","/assets/defaultImgs/back03.jpg");
+					basic.put("picture2","/assets/defaultImgs/back05.jpg");
+					System.out.println("basic"+basic);
+					model.addAttribute("pictures",basic);
+				}else {
+					model.addAttribute("pictures",pictureService.selectAll2(id)); //이부분 석진이형 코드로 변환 필요
+				}
+				
 				return "pages/mypage2";
 			}
 			//list.size가 0이상이면 newpage 테이블에 스키마 존재 layout 컬럼 값에 따라 layout 결정

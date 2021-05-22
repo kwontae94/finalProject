@@ -17,6 +17,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -43,6 +44,8 @@ public class AlbumAddController {
 	@Setter(onMethod_ = {@Autowired})
 	private AttachFileService attachFileService;
 
+	
+	
 	private String getFolder() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date();
@@ -52,8 +55,9 @@ public class AlbumAddController {
 	
 	
 	@RequestMapping("add")
-	public String addalbum() {
+	public String addalbum(Model model) {
 		System.out.println("AlbumAddController");
+		
 		return "album/add";
 	}
 	
@@ -111,7 +115,8 @@ public class AlbumAddController {
 	public void fileupload(MultipartFile[] uploadFile, HttpServletRequest request) {
 
 		System.out.println("uploadAjax");
-		String uploadFolder ="C:/Users/USER/Desktop/java/final_project/Final_prj02/src/main/resources/static/assets/upload/";
+		String uploadFolder ="C:/bootWorkspace/Final_prj02/src/main/resources/static/assets/upload/";
+		
 
 		//make folder
 		File uploadPath = new File(uploadFolder, getFolder());
@@ -156,7 +161,7 @@ public class AlbumAddController {
 	
 	@PostMapping("/uploadProc")
 	public String imageUploadProc(HttpServletRequest request, @RequestParam("uploadFile") MultipartFile file, @RequestParam("caption") String caption,
-			@RequestParam("location") String location) throws IOException {
+			@RequestParam("location") String location, Model model) throws IOException {
 		
 		HttpSession session=request.getSession();
 		String id=(String) session.getAttribute("userID");
@@ -167,9 +172,8 @@ public class AlbumAddController {
 		String uploadFolder = "./assets/upload/";
 
 		attachFileService.upload(uploadFileName, path, id, location, caption);
-		
 
-		return "redirect:/album";
+		return "redirect:/album?id="+id;
 	}
 	
 	
