@@ -20,6 +20,7 @@ public class AuthenticationSuccessHandlerImp implements AuthenticationSuccessHan
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("userID", authentication.getName()); // 로그인 아이디 Session Scope 저장
+		System.out.println(session.getAttribute("userID"));
 		response.sendRedirect("/home");
 	}
 }
