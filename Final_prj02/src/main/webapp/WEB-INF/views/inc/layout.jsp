@@ -16,6 +16,8 @@
   <link rel="stylesheet" type="text/css" href="/style/type/icons.css">
   <link rel="stylesheet" type="text/css" href="/style.css">
   <link rel="stylesheet" type="text/css" href="/style/css/color/lavender.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    rel="stylesheet">
   <script src="/style/js/jquery.min.js"></script>
   <script src="/style/js/popper.min.js"></script>
   <script src="/style/js/bootstrap.min.js"></script>

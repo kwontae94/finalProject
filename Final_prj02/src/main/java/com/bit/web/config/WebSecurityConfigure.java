@@ -32,7 +32,7 @@ public class WebSecurityConfigure extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
 			.antMatchers("/style.css","/style/**").permitAll()	//js ,css style 적용
 			.antMatchers("/","/home","/guest/**").permitAll()			// 모든 이용자 접근 가능
-			.antMatchers("/idcheck","/join","/sendmail").permitAll()	//이용자가 직접 접근 불가능
+			.antMatchers("/idcheck","/join","/sendmail","/image/**").permitAll()	//이용자가 직접 접근 불가능
 			.antMatchers("/member/**","/create","/home/add", "/uploadAjax", "/album/**").hasAnyRole("USER","ADMIN")		//회원및 관리자 이용
 			.anyRequest().authenticated();
 		
@@ -63,6 +63,7 @@ public class WebSecurityConfigure extends WebSecurityConfigurerAdapter {
 			.usersByUsernameQuery("select id, password, enabled from user_list where id = ?")
 			.authoritiesByUsernameQuery("select id, authority from user_list where id=?")
 			.passwordEncoder(new BCryptPasswordEncoder());
+
 	}
 	
 	@Bean
