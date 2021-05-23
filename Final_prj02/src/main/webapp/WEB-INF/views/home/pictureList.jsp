@@ -1,17 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
+  
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-<script
-  src="https://code.jquery.com/jquery-3.6.0.js"
-  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-  crossorigin="anonymous"></script>
   
 <!-- 그림 풀로 보여주기 -->
 <link href="css/full-width-pics.css" rel="stylesheet">  
@@ -91,6 +88,9 @@
 </head>
 <body>
 
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a id="title1" class="navbar-brand" href="#">Travler</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -139,68 +139,61 @@
 
 <main class="container my-5" >
 
-          <div class="row shortcode-html">
+		<script type="text/javascript">
+			$(function(){
+				$('.carousel').carousel();
+				
+			});
+		</script>
+		
+		<style>
+		    .carousel-imgs {
+							 top: 0;
+							 left: 0;
+							 width: 300px;
+							 height: 300px;
+							} 
+		
+		</style>
+		<div class="row">
+			<c:forEach items="${selectID}" var="bean">
+		
+		<div class="col-md-6 text-center g-mb-30">
+			<div id="carouselExampleControlsNoTouching" class="carousel slide" data-touch="false" data-interval="false">
+			  <div class="carousel-inner">
+			  
+		
+			  
+			  <c:forEach var="pictures" items="${getId}">
+			  	
+	            <c:set var="upload" value="${pictures.uploadPath }" />
+	            <c:set var="upload1" value="${fn:substring(upload, upload.length()-25, upload.length()) }" />
+	            <div class="carousel-item active">
 	            
-		  		<c:forEach items="${selectID}" var="bean">
-			  			  			
-		  		
-	              <div class="col-md-6 text-center g-mb-30">
-	                <div class="js-carousel text-center g-pb-30" data-infinite="true" data-arrows-classes="u-arrow-v1 g-absolute-centered--y g-width-35 g-height-40 g-font-size-18 g-color-gray g-bg-white g-mt-minus-10" data-arrow-left-classes="fa fa-angle-left g-left-0" data-arrow-right-classes="fa fa-angle-right g-right-0">
-						<c:forEach items="${getId }" var="pictures">                	
-		                  <div class="js-slide">
-		                    <a class="js-fancybox" href="javascript:;" data-fancybox="lightbox-gallery--07-1" data-src="/${pictures.fileName }" data-caption="Lightbox Gallery">
-		                      <img class="img-fluid g-rounded-6" src="/${pictures.fileName }" alt="Image Description">
-		                      
-		                    </a>
-		                  
-		                  </div>
-		                  
-						</c:forEach>
-	                </div>
-	
-	                <h3 class="h4 g-color-black" style="text-align: left;" onclick="location.href='others?id=${bean.id}'">${bean.user }'s 여행록</h3>
-	                
-	              </div>
-	              
-	              
-				</c:forEach>
-				
-
-				
-				
-          </div>
-          
-          
+	            	<img src="${upload1}/${pictures.fileName} " class="d-block w-100 carousel-imgs" alt="...">
+	            </div>
+	          </c:forEach>
+			  
+			  </div>
+			  <a class="carousel-control-prev" href="#carouselExampleControlsNoTouching" role="button" data-slide="prev">
+			    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			    <span class="sr-only">Previous</span>
+			  </a>
+			  <a class="carousel-control-next" href="#carouselExampleControlsNoTouching" role="button" data-slide="next">
+			    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+			    <span class="sr-only">Next</span>
+			  </a>
+			</div>
+			
+			<h3 class="h4 g-color-black" style="text-align: left;" onclick="location.href='others?id=${bean.id}'">${bean.user }'s 여행록</h3>
+			
+		</div>
+		
+			</c:forEach>
+		</div>
+          <!-- /assets/defaultImgs/back01.jpg -->
           
 
-          <div class="shortcode-styles">
-            <!-- CSS Implementing Plugins -->
-            <link  rel="stylesheet" href="/assets/vendor/icon-hs/style.css">
-            <link  rel="stylesheet" href="/assets/vendor/fancybox/jquery.fancybox.min.css">
-            <link  rel="stylesheet" href="/assets/vendor/slick-carousel/slick/slick.css">
-          </div>
-
-          <div class="shortcode-scripts">
-            <!-- JS Implementing Plugins -->
-            <script  src="/assets/vendor/fancybox/jquery.fancybox.min.js"></script>
-            <script  src="/assets/vendor/slick-carousel/slick/slick.js"></script>
-
-            <!-- JS Unify -->
-            <script  src="/assets/js/components/hs.popup.js"></script>
-            <script  src="/assets/js/components/hs.carousel.js"></script>
-
-            <!-- JS Plugins Init. -->
-            <script >
-              $(document).on('ready', function () {
-                // initialization of popups
-                $.HSCore.components.HSPopup.init('.js-fancybox');
-
-                // initialization of carousel
-                $.HSCore.components.HSCarousel.init('.js-carousel');
-              });
-            </script>
-     
-          </div>
           
           
         

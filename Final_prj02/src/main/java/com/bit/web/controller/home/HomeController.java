@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.bit.web.entity.AttachFileVo;
 import com.bit.web.entity.CreateVo;
 import com.bit.web.entity.PictureVo;
 import com.bit.web.service.AttachFileService;
@@ -147,9 +148,7 @@ public class HomeController {
 	@GetMapping("pictureList")
 	public String pictureList(Model model) {
 		
-		
-		
-		List selectID=createService.selectID();
+		List<CreateVo> selectID=createService.selectID();
 		
 		System.out.println("selectID="+selectID);
 		
@@ -158,11 +157,20 @@ public class HomeController {
 		while(it.hasNext()) {
 			CreateVo name=it.next();
 			String getId=name.getId();
-			model.addAttribute("getId", pictureService.selectAll(getId));
+			model.addAttribute("getId", attachFileService.selectFile(getId));
 		}
 		
+//		for(int i=0; i<selectID.size();i++) {
+//				selectID.get(i); //newpage에서 뽑아온 list user랑 id들 뽑아옴
+//				List<List> photos=new ArrayList<>();
+//				
+//				String getId=selectID.get(i).getId();
+//				photos.add(attachFileService.selectFile(getId));  //아이디에 해당하는 사진을 받아옴
+//				model.addAttribute("getId",photos);
+//		}
 		
 		model.addAttribute("selectID",createService.selectID());
+		
 		
 		return "/home/pictureList";
 	}
