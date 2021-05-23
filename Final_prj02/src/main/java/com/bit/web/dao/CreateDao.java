@@ -23,5 +23,6 @@ public interface CreateDao {
 	
 	void updatePage(CreateVo bean);
 	
+	List<CreateVo> join();
 
 }

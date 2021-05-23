@@ -118,6 +118,7 @@ public class HomeController {
 				return "pages/mypage";
 			}else if(bean.getLayout()==2) {
 				model.addAttribute("layout",list);
+				model.addAttribute("list1",attachFileService.selectFile(id));
 				if(pictureService.selectAll2(id).size()<3) {
 					Map<String,String> basic=new HashMap<String,String>();
 					basic.put("picture0","/assets/defaultImgs/back01.jpg");
@@ -126,9 +127,7 @@ public class HomeController {
 					System.out.println("basic"+basic);
 					model.addAttribute("pictures",basic);
 				}else {
-					model.addAttribute("pictures",pictureService.selectAll2(id)); //이부분도 석진이형 코드로 변경 필요
-					
-					
+					model.addAttribute("pictures",pictureService.selectAll2(id)); //이부분도 석진이형 코드로 변경 필요	
 				}
 				
 				return "pages/mypage2";
@@ -148,17 +147,17 @@ public class HomeController {
 	@GetMapping("pictureList")
 	public String pictureList(Model model) {
 		
-		List<CreateVo> selectID=createService.selectID();
-		
-		System.out.println("selectID="+selectID);
-		
-		Iterator<CreateVo> it=selectID.iterator();
-		
-		while(it.hasNext()) {
-			CreateVo name=it.next();
-			String getId=name.getId();
-			model.addAttribute("getId", attachFileService.selectFile(getId));
-		}
+//		List<CreateVo> selectID=createService.selectID();
+//		
+//		System.out.println("selectID="+selectID);
+//		
+//		Iterator<CreateVo> it=selectID.iterator();
+//		
+//		while(it.hasNext()) {
+//			CreateVo name=it.next();
+//			String getId=name.getId();
+//			model.addAttribute("getId", attachFileService.selectFile(getId));
+//		}
 		
 //		for(int i=0; i<selectID.size();i++) {
 //				selectID.get(i); //newpage에서 뽑아온 list user랑 id들 뽑아옴
@@ -169,8 +168,9 @@ public class HomeController {
 //				model.addAttribute("getId",photos);
 //		}
 		
-		model.addAttribute("selectID",createService.selectID());
+//		model.addAttribute("selectID",createService.selectID());
 		
+		model.addAttribute("join",createService.join()); 
 		
 		return "/home/pictureList";
 	}
@@ -184,11 +184,11 @@ public class HomeController {
 			CreateVo bean=list.get(0);
 			if(bean.getLayout()==1) {
 				model.addAttribute("layout",list);
-				model.addAttribute("pictures",pictureService.selectAll(id));
+				model.addAttribute("list1",attachFileService.selectFile(id));
 				return "pages/mypage";
 			}else if(bean.getLayout()==2) {
 				model.addAttribute("layout",list);
-				
+				model.addAttribute("list1",attachFileService.selectFile(id));
 				if(pictureService.selectAll2(id).size()<3) {
 					Map<String,String> basic=new HashMap<String,String>();
 					basic.put("picture0","/assets/defaultImgs/back01.jpg");

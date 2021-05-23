@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -82,7 +83,7 @@
                 </li>
 
                 <li class="nav-item  g-mx-10--lg g-mx-15--xl">
-                  <a href="#" class="nav-link g-py-7 g-px-0">방명록</a>
+                  <a href="/home" class="nav-link g-py-7 g-px-0">travler home</a>
                 </li>
                 <!--End menu bar  -->
               </ul>
@@ -209,66 +210,28 @@
       <div class="masonry-grid row">
         <div class="masonry-grid-sizer col-sm-1"></div>
 
-        <div class="masonry-grid-item col-md-6 g-mb-30">
+        <div class="masonry-grid-item col-md-12 g-mb-30">
           <div class="g-px-50 g-pb-50">
-            <h1 class="g-color-black g-font-weight-600 g-line-height-1_4">Creative Digital &amp;<br>Enthusiastic Agency
-              </h1>
+            <h1 class="g-color-black g-font-weight-600 g-line-height-1_4">여행 사진들</h1>
           </div>
         </div>
 
-        <div class="masonry-grid-item col-md-6 g-mb-30">
-          <div class="g-px-50--lg g-pb-50--lg">
-            <p class="g-color-black g-font-weight-600">This is where we sit down, grab a cup of coffee and dial in the details. Understanding the task at hand and ironing out the wrinkles is key.</p>
-            <p>Now that we've aligned the details, it's time to get things mapped out and organized. This part is really crucial in keeping the project in line to completion.</p>
-          </div>
-        </div>
 
-        <div class="masonry-grid-item col-sm-6 col-md-5 g-mb-30">
-          <img class="img-fluid w-100" src="/assets/img-temp/500x320/img2.jpg" alt="Image description">
+		<c:forEach var="list" items="${list1}">		
+		<c:set var="upload" value="${list.uploadPath }" />
+            <c:set var="upload1" value="${fn:substring(upload, upload.length()-25, upload.length()) }" />
+        <div class="masonry-grid-item col-sm-6 col-md-4 g-mb-30">
+          <img class="img-fluid w-100" src="${upload1}/${list.fileName}" alt="Image description">
         </div>
+        </c:forEach>
+        
+       
+        
 
-        <div class="masonry-grid-item col-sm-6 col-md-5 g-offset-md-1 g-mb-30">
-          <img class="img-fluid w-100" src="/assets/img-temp/500x320/img3.jpg" alt="Image description">
-        </div>
 
-        <div class="masonry-grid-item col-md-5 g-mb-30">
-          <div class="g-px-50--lg g-pt-50--lg">
-            <h2 class="h3 g-color-black g-font-weight-600">What We Do</h2>
 
-            <div class="row">
-              <ul class="col-lg-6 list-unstyled">
-                <li class="g-my-15">
-                  <span class="u-icon-v1 g-color-primary"><i class="icon-finance-138 u-line-icon-pro"></i></span>
-                  <a class="g-brd-bottom g-brd-1 g-brd-gray-dark-v4 g-brd-black--hover g-color-gray-dark-v3 g-color-primary--hover g-text-underline--none--hover g-transition-0_3 pb-1" href="#">Marketing</a>
-                </li>
-                <li class="g-my-15">
-                  <span class="u-icon-v1 g-color-primary"><i class="icon-finance-007 u-line-icon-pro"></i></span>
-                  <a class="g-brd-bottom g-brd-1 g-brd-gray-dark-v4 g-brd-black--hover g-color-gray-dark-v3 g-color-primary--hover g-text-underline--none--hover g-transition-0_3 pb-1" href="#">Project planning</a>
-                </li>
-                <li>
-                  <span class="u-icon-v1 g-color-primary"><i class="icon-education-087 u-line-icon-pro"></i></span>
-                  <a class="g-brd-bottom g-brd-1 g-brd-gray-dark-v4 g-brd-black--hover g-color-gray-dark-v3 g-color-primary--hover g-text-underline--none--hover g-transition-0_3 pb-1" href="#">Branding work</a>
-                </li>
-              </ul>
-              <ul class="col-lg-6 list-unstyled">
-                <li class="g-my-15--lg">
-                  <span class="u-icon-v1 g-color-primary"><i class="icon-finance-122 u-line-icon-pro"></i></span>
-                  <a class="g-brd-bottom g-brd-1 g-brd-gray-dark-v4 g-brd-black--hover g-color-gray-dark-v3 g-color-primary--hover g-text-underline--none--hover g-transition-0_3 pb-1" href="#">Design</a>
-                </li>
-                <li class="g-my-15">
-                  <span class="u-icon-v1 g-color-primary"><i class="icon-finance-189 u-line-icon-pro"></i></span>
-                  <a class="g-brd-bottom g-brd-1 g-brd-gray-dark-v4 g-brd-black--hover g-color-gray-dark-v3 g-color-primary--hover g-text-underline--none--hover g-transition-0_3 pb-1" href="#">Support</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
 
-        <div class="masonry-grid-item col-md-5 g-offset-md-1 g-mb-30">
-          <div class="g-px-50--lg g-pt-50--lg">
-            <p>Whether through commerce or just an experience to tell your brand's story, the time has come to start using development languages that fit your projects needs.</p>
-          </div>
-        </div>
+
       </div>
     </section>
     <!-- End About -->

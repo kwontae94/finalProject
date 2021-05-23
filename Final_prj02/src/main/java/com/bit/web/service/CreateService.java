@@ -15,5 +15,7 @@ public interface CreateService {
 	List<CreateVo> selectID();
 	
 	void updatePage(int layout, String title, String email, String phone, String user, String id);
+	
+	List<CreateVo> join(); 
 
 }

@@ -70,6 +70,14 @@ public class CreateServiceImpl implements CreateService{
 		createDao.updatePage(bean);
 	}
 
+	@Override
+	public List<CreateVo> join() {
+		
+		System.out.println("join 결과물 :  " + createDao.join());
+		
+		return createDao.join();
+	}
+
 	
 	
 

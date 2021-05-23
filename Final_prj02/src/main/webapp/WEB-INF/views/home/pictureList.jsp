@@ -137,7 +137,7 @@
 
   
 
-<main class="container my-5" >
+<main class="container my-5" style="height: 900px;">
 
 		<script type="text/javascript">
 			$(function(){
@@ -156,23 +156,23 @@
 		
 		</style>
 		<div class="row">
-			<c:forEach items="${selectID}" var="bean">
+			<c:forEach items="${join}" var="join">
 		
-		<div class="col-md-6 text-center g-mb-30">
+		<div class="col-md-4 text-center g-mb-30">
 			<div id="carouselExampleControlsNoTouching" class="carousel slide" data-touch="false" data-interval="false">
 			  <div class="carousel-inner">
 			  
 		
 			  
-			  <c:forEach var="pictures" items="${getId}">
+			  
 			  	
-	            <c:set var="upload" value="${pictures.uploadPath }" />
+	            <c:set var="upload" value="${join.attachFileVo.uploadPath }" />
 	            <c:set var="upload1" value="${fn:substring(upload, upload.length()-25, upload.length()) }" />
 	            <div class="carousel-item active">
 	            
-	            	<img src="${upload1}/${pictures.fileName} " class="d-block w-100 carousel-imgs" alt="...">
+	            	<img src="${upload1}/${join.attachFileVo.fileName} " class="d-block w-100 carousel-imgs" alt="...">
 	            </div>
-	          </c:forEach>
+	          
 			  
 			  </div>
 			  <a class="carousel-control-prev" href="#carouselExampleControlsNoTouching" role="button" data-slide="prev">
@@ -185,7 +185,7 @@
 			  </a>
 			</div>
 			
-			<h3 class="h4 g-color-black" style="text-align: left;" onclick="location.href='others?id=${bean.id}'">${bean.user }'s 여행록</h3>
+			<h3 class="h4 g-color-black" style="text-align: left;" onclick="location.href='others?id=${join.createVo.id}'">${join.createVo.user }'s 여행록</h3>
 			
 		</div>
 		
@@ -200,8 +200,10 @@
 </main>
 
     <!-- Footer -->
-  <footer class="bg-dark">
+  <footer class="bg-dark" style="height: 100px;">
     <div class="container">
+    	<br/>
+       	<br/>
       <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
     </div>
     <!-- /.container -->

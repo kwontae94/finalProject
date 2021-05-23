@@ -100,7 +100,7 @@
 							<!--menu bar  -->
 							<li class="nav-item  g-mx-10--lg g-mx-15--xl"><a href="/album?id=${layout[0].getId()}" class="nav-link g-py-7 g-px-0">사진첩</a></li>
 
-							<li class="nav-item  g-mx-10--lg g-mx-15--xl"><a href="#" class="nav-link g-py-7 g-px-0">방명록</a></li>
+							<li class="nav-item  g-mx-10--lg g-mx-15--xl"><a href="/home" class="nav-link g-py-7 g-px-0">travler home</a></li>
 							<!--End menu bar  -->
 						</ul>
 					</div>

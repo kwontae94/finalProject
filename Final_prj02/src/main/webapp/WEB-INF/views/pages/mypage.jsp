@@ -14,10 +14,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-  <script
+<!--   <script
   src="https://code.jquery.com/jquery-3.6.0.js"
   integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-  crossorigin="anonymous"></script>
+  crossorigin="anonymous"></script> -->
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+  
 
   <!-- Favicon -->
   <link rel="shortcut icon" href="/favicon.ico">
@@ -82,7 +86,7 @@
                 </li>
 
                 <li class="nav-item  g-mx-10--lg g-mx-15--xl">
-                  <a href="#" class="nav-link g-py-7 g-px-0">방명록</a>
+                  <a href="/home" class="nav-link g-py-7 g-px-0">travler home</a>
                 </li>
                 <!--End menu bar  -->
               </ul>
@@ -130,17 +134,19 @@
 
 
         
-   
- <%--   <section class="g-py-100">
+<%--    
+ 	<section class="g-py-100">
 		<div class="container">
-				<div class="row">
+				<div class="row masonry-grid-item">
 					
-					<c:forEach items="${pictures }" var="bean" varStatus="status">
+         <c:forEach var="list" items="${list1}">
+            <c:set var="upload" value="${list.uploadPath }" />
+            <c:set var="upload1" value="${fn:substring(upload, upload.length()-25, upload.length()) }" />
 					  <div class="col-lg-6 g-mb-30">
 					    <!-- Article -->
 					    <article class="u-block-hover g-mb-10">
-					      <figure class="u-bg-overlay g-bg-black-opacity-0_3--after">
-					        <img class="img-fluid w-100 u-block-hover__main--zoom-v1" src="${bean.fileName }" alt="Image Description">
+					      <figure class="u-bg-overlay g-bg-black-opacity-0_3--after" style="width: 400px; height: 400px; overflow: hidden">
+					        <img class="img-fluid w-100 u-block-hover__main--zoom-v1" src="${upload1}/${list.fileName}" alt="Image Description" style="width: 400px; height: 400px;">
 					      </figure>
 					
 					    </article>
@@ -148,54 +154,49 @@
 					      <!-- <hr class="g-brd-gray-light-v4"> -->
 					    
 						  <h3 class="g-font-weight-300 g-mb-15">
-			                <a class="u-link-v5 g-color-main g-color-primary--hover" href="#">${bean.title }</a>
+			                <a class="u-link-v5 g-color-main g-color-primary--hover" href="#">${list.caption }</a>
 			              </h3>
 			              
 			               <div class="g-mb-30">
-				                <p>${bean.comment }</p>
+				                <p>${list.location }</p>
 				           </div>
 					  </div>
 					  
-					</c:forEach>
+		</c:forEach>
 		  
 				</div>  
    		 </div>
     </section> --%>
     
     <section class="g-py-100">
-		<div class="container">
-    <div class="container g-py-100 masonry-grid-item col-sm-6 g-mb-30" id="layout">
+	<div class="container">
+	<div class="row">
+         <c:forEach var="list" items="${list1}">
+    <div class="masonry-grid-item col-mb-6 g-mb-20 g-mr-20" id="layout">
       <!-- Blog Classic Blocks -->
       <article class="u-shadow-v11">
-         <c:forEach var="list" items="${list1}">
             <c:set var="upload" value="${list.uploadPath }" />
             <c:set var="upload1" value="${fn:substring(upload, upload.length()-25, upload.length()) }" />
-            <img class="img-fluid w-100" src="${upload1}/${list.fileName}">
-
-            <div class="g-bg-white g-pa-30">
-               <span class="d-block g-color-gray-dark-v4 g-font-weight-600 g-font-size-12 text-uppercase mb-2">${list.date }</span>
+            <div style="width: 550px; height: 350px; overflow: hidden">
+            	<img class="img-fluid w-100" src="${upload1}/${list.fileName}" style="width: 550px; height: 350px;">
+			</div>
+			
+            <div class="g-bg-white g-pa-20">
                <h2 class="h5 g-color-black g-font-weight-600 mb-3">
                   <a class="u-link-v5 g-color-black g-color-primary--hover g-cursor-pointer" href="#">${list.caption }</a>
                </h2>
-               <p class="g-color-gray-dark-v4 g-line-height-1_8">${list.location }</p>
+               <hr class="g-my-10"/>
 
-               <hr class="g-my-20">
 
-               <ul class="list-inline d-flex justify-content-between mb-0">
-                  <li class="list-inline-item g-color-gray-dark-v4"><a
-                     class="d-inline-block g-color-gray-dark-v4 g-font-size-13 g-cursor-pointer g-text-underline--none--hover" href="#"> <i
-                        class="align-middle g-font-size-default mr-1 icon-finance-206 u-line-icon-pro"></i> 10 Comments
-                  </a></li>
-               </ul>
-
-               <hr class="g-my-20">
-
-                           </div>
-         </c:forEach>
+            </div>
       </article>
       <!-- End Blog Classic Blocks -->
    </div>
+         </c:forEach>
    </div>
+   </div>
+   
+   
    </section>
     
           

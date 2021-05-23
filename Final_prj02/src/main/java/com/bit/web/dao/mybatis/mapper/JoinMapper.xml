@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bit.web.dao.CreateDao">
+
+	<resultMap type="com.bit.web.entity.AttachFileVo" id="AttachFileVo">
+		<result column="fileName" property="fileName"/>
+		<result column="uploadPath" property="uploadPath"/>
+		<result column="id" property="id"/>
+		<result column="date" property="date"/>
+		<result column="location" property="location"/>
+		<result column="caption" property="caption"/>
+		
+	</resultMap>
+	
+	<resultMap type="com.bit.web.entity.CreateVo" id="CreateVo">
+		<result column="layout" property="layout"/>
+		<result column="title" property="title"/>
+		<result column="email" property="email"/>
+		<result column="phone" property="phone"/>
+		<result column="user" property="user"/>
+		<result column="id" property="id"/>
+	
+	</resultMap>
+	
+	<resultMap type="com.bit.web.entity.JoinVo" id="JoinVo">
+		<collection property="createVo" resultMap="CreateVo"/>
+		<collection property="attachFileVo" resultMap="AttachFileVo"/>
+	</resultMap>
+	
+	<select id="join" resultMap="JoinVo">
+		SELECT * FROM newpage A INNER JOIN upload_file B ON A.id=B.id  GROUP BY A.id ORDER BY B.date DESC
+	</select>
+	
+</mapper>

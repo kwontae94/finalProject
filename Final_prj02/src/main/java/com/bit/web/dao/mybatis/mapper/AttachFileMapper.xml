@@ -13,7 +13,7 @@
 	</insert>
 	
 	<select id="selectFile" resultType="com.bit.web.entity.AttachFileVo" parameterType="java.lang.String">
-		select * from upload_file where id = #{id}
+		select * from upload_file where id = #{id} order by date desc
 	</select>
 	
 	<select id="selectFileName" resultType="com.bit.web.entity.AttachFileVo" parameterType="java.lang.String">
